@@ -1,0 +1,7 @@
+sonar:
+  organization: Andras-T
+  projectKey: iet-hf-2023-hangolow
+  projectName: iet-hf-2023-hangolow
+  sources: src
+  language: java
+  sourceEncoding: UTF-8
