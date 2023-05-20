@@ -1,6 +1,4 @@
 
-?
-IET-ProjLab.iml,9\5\95f6af7b37d1cddf3758a2a156b427306ff4c141
 I
 src/view/DrawableAxe.java,1\2\1259a45b7b894d4d782aa0c49b8127efbfdf2ef9
 C
