@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>iet-hf-2023-hangolow</groupId>
     <artifactId>iet-hf-2023-hangolow</artifactId>
-    <version>1.0.0</version>
+    <version>0.1.0</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
