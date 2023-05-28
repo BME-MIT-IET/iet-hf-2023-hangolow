@@ -2,7 +2,7 @@ Feature: Inject
   As a player
   I want to be able to inject any player with the specified agent
 
-  Scenario 1: The player tries to inject someone, but they are stunned
+  Scenario: The player tries to inject someone, but they are stunned
     Given the player is stunned
     When the user clicks on "Actions"
     And the user clicks on "inject"
@@ -10,7 +10,7 @@ Feature: Inject
     And chooses an agent
     Then the player loses an action
 
-  Scenario 2: The player tries to inject someone, but they lack the resources
+  Scenario: The player tries to inject someone, but they lack the resources
     Given the player has more than 0 remaining moves
     And the player lacks the necessary resources to create an agent
     When the user clicks on "Actions"
@@ -19,7 +19,7 @@ Feature: Inject
     And chooses an agent
     Then the player loses an action
 
-  Scenario 3: The player tries to inject someone, but they have the Block agent
+  Scenario: The player tries to inject someone, but they have the Block agent
     Given the player has more than 0 remaining moves
     And the enemy player has the Block agent on them
     When the user clicks on "Actions"
@@ -28,7 +28,7 @@ Feature: Inject
     And chooses an agent
     Then the player loses an action
 
-  Scenario 4: The player tries to inject someone with an agent
+  Scenario: The player tries to inject someone with an agent
     Given the player has more than 0 remaining moves
     And the player has the necessary resources to create an agent
     When the user clicks on "Actions"
