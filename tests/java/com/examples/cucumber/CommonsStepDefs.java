@@ -7,8 +7,11 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import model.Virologist;
-import model.map.Field;
-import model.map.Warehouse;
+import model.agents.Agent;
+import model.agents.Stun;
+import model.codes.StunCode;
+import model.equipments.Cloak;
+import model.map.*;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -33,7 +36,15 @@ public class CommonsStepDefs {
             case "warehouse":
                 context.currentField = new Warehouse();
                 break;
-
+            case "laboratory":
+                context.currentField = new Laboratory(new StunCode());
+                break;
+            case "shelter":
+                context.currentField = new Shelter(new Cloak());
+                break;
+            case "InfectedLaboratory":
+                context.currentField = new InfectedLaboratory(new StunCode());
+                break;
             case "non-warehouse":
             default:
                 context.currentField = new Field();
@@ -48,7 +59,7 @@ public class CommonsStepDefs {
         assertTrue(context.userPlayer.getActionCount() > arg0);
     }
 
+
     @When("nothing")
-    public void nothing() {
-    }
+    public void nothing() {}
 }
