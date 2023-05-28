@@ -2,7 +2,7 @@ Feature: Move
   As a player
   I want to move to a different field
 
-  Scenario 1: A successful move to another field with moves remaining
+  Scenario: A successful move to another field with moves remaining
     Given the player has more than 0 remaining moves
     When the user clicks on "Actions"
     And the user clicks on "move"
@@ -10,7 +10,7 @@ Feature: Move
     Then the player is moved to the chosen field
     And the player loses an action
 
-  Scenario 2: A unsuccessful move to another field with no moves remaining
+  Scenario: A unsuccessful move to another field with no moves remaining
     Given the player has 0 remaining moves
     When the user clicks on "Actions"
     And the user clicks on "move"
@@ -18,7 +18,7 @@ Feature: Move
     Then the player stays on the same field as before
     And the player loses an action
 
-  Scenario 3: The player tries to move, but is stunned
+  Scenario: The player tries to move, but is stunned
     Given the player is stunned
     When the user clicks on "Actions"
     And the user clicks on "move"
@@ -26,7 +26,7 @@ Feature: Move
     Then the player stays on the same field as before
     And the player loses an action
 
-  Scenario 4: The player is infected with the bear virus
+  Scenario: The player is infected with the bear virus
     Given the player is infected with the bear virus
     When the user clicks on "Actions"
     And the user clicks on "move"
@@ -35,7 +35,7 @@ Feature: Move
     And if there are other players on the field, they become infected as well
     And the player loses an action
 
-  Scenario 5: The player moves to an infected laboratory
+  Scenario: The player moves to an infected laboratory
     Given the player has more than 0 remaining moves
     When the user clicks on "Actions"
     And the user clicks on "move"
@@ -44,7 +44,7 @@ Feature: Move
     And the player is infected with the bear virus
     And the player loses an action
 
-  Scenario 6: The player moves to an infected laboratory
+  Scenario: The player moves to an infected laboratory
     Given the player has more than 0 remaining moves
     When the user clicks on "Actions"
     And the user clicks on "move"
