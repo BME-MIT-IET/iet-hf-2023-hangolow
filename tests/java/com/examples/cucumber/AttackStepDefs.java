@@ -24,7 +24,7 @@ public class AttackStepDefs {
     public void initialize()
     {
         Game game = Game.Create();
-        context = TestWorldContext.GetNewInstance();
+        context = TestWorldContext.Instance();
         context.userPlayer = new Virologist();
         context.enemyPlayer = new Virologist();
         Virologist dummyPLayer = new Virologist();

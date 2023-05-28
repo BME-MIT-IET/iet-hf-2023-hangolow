@@ -18,7 +18,7 @@ public class DropStepDefs {
     @Before
     public void initialize()
     {
-        context = TestWorldContext.GetNewInstance();
+        context = TestWorldContext.Instance();
         context.userPlayer = new Virologist();
         context.userPlayer.AddEquipment(new Glove());
         lastEquipment = new Cloak();
