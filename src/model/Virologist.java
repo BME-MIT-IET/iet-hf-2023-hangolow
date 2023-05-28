@@ -766,4 +766,9 @@ public class Virologist extends Subject
 	public int GetCodeCount() {
 		return codes.size();
 	}
+
+	public int GetMaxEquipmentCount()
+	{
+		return maxNumberOfItems;
+	}
 }

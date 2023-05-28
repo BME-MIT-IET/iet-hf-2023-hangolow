@@ -18,11 +18,9 @@ import model.map.Field;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AttackStepDefs {
-    TestWorldContext context;
-
-    @Before
-    public void initialize()
-    {
+    @Given("InitAttack")
+    public void initAttack() {
+        var context = TestWorldContext.Instance();
         Game game = Game.Create();
         context = TestWorldContext.Instance();
         context.userPlayer = new Virologist();
@@ -40,9 +38,9 @@ public class AttackStepDefs {
         game.AddGeneticCode(new BlockCode());
     }
 
-
     @And("has no weapon")
     public void hasNoWeapon() {
+        var context = TestWorldContext.Instance();
         for( var equipment : context.userPlayer.GetEquipments() )
         {
             assertNotSame(equipment.getClass(), Axe.class);
@@ -51,29 +49,33 @@ public class AttackStepDefs {
 
     @And("has a weapon")
     public void hasAWeapon() {
+        var context = TestWorldContext.Instance();
         Axe axe = new Axe();
         context.userPlayer.AddEquipment(axe);
     }
 
     @Given("the player is stunned")
     public void thePlayerIsStunned() {
+        var context = TestWorldContext.Instance();
         Agent stun = new Stun(10);
         context.userPlayer.AddAgent(stun);
     }
 
     @When("the player attacks an enemy")
     public void thePlayerAttacksAnEnemy() {
+        var context = TestWorldContext.Instance();
         context.userPlayer.Attack(context.enemyPlayer);
     }
 
     @When("the player attacks themselves")
     public void thePlayerAttacksThemselves() {
-        Game.Create().AddVirologist(context.userPlayer);
+        var context = TestWorldContext.Instance();
         context.userPlayer.Attack(context.userPlayer);
     }
 
     @Then("the {string} player stays alive")
     public void thePlayerStaysAlive(String arg0) {
+        var context = TestWorldContext.Instance();
         var virologistsAlive = Game.Create().getVirologists();
         boolean isAlive = false;
         Virologist player = null;
@@ -98,6 +100,7 @@ public class AttackStepDefs {
 
     @Then("kills {string}")
     public void kills(String arg0) {
+        var context = TestWorldContext.Instance();
         var virologistsAlive = Game.Create().getVirologists();
         boolean isAlive = false;
         Virologist player = null;

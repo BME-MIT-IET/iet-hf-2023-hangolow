@@ -48,4 +48,7 @@ public class CommonsStepDefs {
         assertTrue(context.userPlayer.getActionCount() > arg0);
     }
 
+    @When("nothing")
+    public void nothing() {
+    }
 }

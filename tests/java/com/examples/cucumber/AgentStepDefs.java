@@ -73,8 +73,11 @@ public class AgentStepDefs {
     @Then("the player will start moving randomly infecting others and destroying resources")
     public void thePlayerWillStartMovingRandomlyInfectingOthersAndDestroyingResources() {
         Field targetField = startingField.GetNeighbours().get(0);
-        userPlayer.Move(targetField);
-        Field currentField = userPlayer.getField();
+        Field currentField = null;
+        do {
+            userPlayer.Move(targetField);
+            currentField= userPlayer.getField();
+        }while(userPlayer.getField().equals(targetField));
         assertTrue(currentField != targetField);
         Virologist enemyVirologist = currentField.GetVirologists().get(0);
         int agentCount = enemyVirologist.GetAgentCount();
