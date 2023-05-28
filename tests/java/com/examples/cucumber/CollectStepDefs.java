@@ -17,7 +17,7 @@ public class CollectStepDefs {
     @Before
     public void initialize()
     {
-        context = TestWorldContext.Instance();
+        context = TestWorldContext.GetNewInstance();
         context.userPlayer = new Virologist();
         context.currentField = new Field();
         context.userPlayer.SetField(context.currentField);

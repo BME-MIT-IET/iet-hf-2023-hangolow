@@ -25,4 +25,9 @@ public class TestWorldContext {
 
         return instance;
     }
+    public static TestWorldContext GetNewInstance()
+    {
+        instance = new TestWorldContext();
+        return instance;
+    }
 }
