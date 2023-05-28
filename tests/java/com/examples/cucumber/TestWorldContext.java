@@ -4,7 +4,7 @@ import model.Game;
 import model.Virologist;
 import model.map.Field;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 public class TestWorldContext {
     static TestWorldContext instance;

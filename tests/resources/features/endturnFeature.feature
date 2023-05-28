@@ -3,12 +3,8 @@ Feature: End turn
   I want to be able to end my turn
 
   Scenario: The player ends their turn
-    Given that it's the player's turn
-    When the user clicks on "Actions"
-    And the user clicks on "endTurn"
+    Given that it is the player's turn
+    And the player has 0 or more actions remaining
+    When the user ends their turn
     Then the player ends their turn
-
-  Scenario: The player ends their turn with the button
-    Given that it's the player's turn
-    When the user clicks on "EndTurnButton"
-    Then the player ends their turn
+    And the player's remaining actions are set to 3
