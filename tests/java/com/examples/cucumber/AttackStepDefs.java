@@ -18,65 +18,58 @@ import model.map.Field;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AttackStepDefs {
-    Virologist userPlayer;
-    Virologist enemyPlayer;
+    TestWorldContext context;
 
     @Before
     public void initialize()
     {
         Game game = Game.Create();
-        userPlayer = new Virologist();
-        enemyPlayer = new Virologist();
+        context = TestWorldContext.Instance();
+        context.userPlayer = new Virologist();
+        context.enemyPlayer = new Virologist();
         Virologist dummyPLayer = new Virologist();
         game.NewGame();
-        game.AddVirologist(userPlayer);
-        game.AddVirologist(enemyPlayer);
+        game.AddVirologist(context.userPlayer);
+        game.AddVirologist(context.enemyPlayer);
         game.AddVirologist(dummyPLayer);
         Field field = new Field();
         game.AddField(field);
-        field.AddVirologist(userPlayer);
-        field.AddVirologist(enemyPlayer);
+        field.AddVirologist(context.userPlayer);
+        field.AddVirologist(context.enemyPlayer);
         field.AddVirologist(dummyPLayer);
         game.AddGeneticCode(new BlockCode());
     }
-    @Given("the player has more than {int} remaining moves")
-    public void thePlayerHasMoreThanRemainingMoves(int arg0) {
-        assertTrue(userPlayer.getActionCount() > arg0);
-    }
+
 
     @And("has no weapon")
     public void hasNoWeapon() {
-        for( var equipment : userPlayer.GetEquipments() )
+        for( var equipment : context.userPlayer.GetEquipments() )
         {
             assertNotSame(equipment.getClass(), Axe.class);
         }
     }
 
-    @And("the player loses an action")
-    public void thePlayerLosesAnAction() {
-        assertTrue(userPlayer.getActionCount() < 3);
-    }
-
     @And("has a weapon")
     public void hasAWeapon() {
         Axe axe = new Axe();
-        userPlayer.AddEquipment(axe);
+        context.userPlayer.AddEquipment(axe);
     }
 
     @Given("the player is stunned")
     public void thePlayerIsStunned() {
         Agent stun = new Stun(10);
-        userPlayer.AddAgent(stun);
+        context.userPlayer.AddAgent(stun);
     }
 
     @When("the player attacks an enemy")
     public void thePlayerAttacksAnEnemy() {
-        userPlayer.Attack(enemyPlayer);
+        context.userPlayer.Attack(context.enemyPlayer);
     }
 
     @When("the player attacks themselves")
     public void thePlayerAttacksThemselves() {
-        userPlayer.Attack(userPlayer);
+        Game.Create().AddVirologist(context.userPlayer);
+        context.userPlayer.Attack(context.userPlayer);
     }
 
     @Then("the {string} player stays alive")
@@ -86,11 +79,11 @@ public class AttackStepDefs {
         Virologist player = null;
         if(arg0.equals("user"))
         {
-            player = userPlayer;
+            player = context.userPlayer;
         }
         else if(arg0.equals("enemy"))
         {
-            player = enemyPlayer;
+            player = context.enemyPlayer;
         }
 
         for (var virologist : virologistsAlive)
@@ -110,11 +103,11 @@ public class AttackStepDefs {
         Virologist player = null;
         if(arg0.equals("themselves"))
         {
-            player = userPlayer;
+            player = context.userPlayer;
         }
         else if(arg0.equals("the enemy player"))
         {
-            player = enemyPlayer;
+            player = context.enemyPlayer;
         }
 
         for (var virologist : virologistsAlive)

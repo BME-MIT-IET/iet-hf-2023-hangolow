@@ -4,7 +4,7 @@ Feature: Learn
 
   Scenario 1: The player learns a genetic code from the laboratory
     Given the player has more than 0 remaining moves
-    And the player is on a laboratory field
+    And the player is on a "laboratory" field
     And the genetic code is unknown to the player
     When the user clicks on "Actions"
     And the user clicks on "learn"
@@ -13,7 +13,7 @@ Feature: Learn
 
   Scenario 2: The player tries to learn a genetic code from non-laboratory field
     Given the player has more than 0 remaining moves
-    And the player is on a non-laboratory field
+    And the player is on a "non-laboratory" field
     And the genetic code is unknown to the player
     When the user clicks on "Actions"
     And the user clicks on "learn"
@@ -27,7 +27,7 @@ Feature: Learn
 
   Scenario 4: The player tries to learn a genetic code from non-laboratory field
     Given the player has more than 0 remaining moves
-    And the player is on a laboratory field
+    And the player is on a "laboratory" field
     And the genetic code is known to the player
     When the user clicks on "Actions"
     And the user clicks on "learn"
