@@ -756,4 +756,14 @@ public class Virologist extends Subject
 	{
 		lootedStr =l;
 	}
+
+
+	//FOR INTERNAL USE ONLY!
+	public int GetAgentCount() {
+		return agents.size();
+	}
+
+	public int GetCodeCount() {
+		return codes.size();
+	}
 }
