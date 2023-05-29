@@ -58,6 +58,7 @@ public class AttackStepDefs {
     public void thePlayerIsStunned() {
         var context = TestWorldContext.Instance();
         Agent stun = new Stun(10);
+        stun.Apply(context.userPlayer);
         context.userPlayer.AddAgent(stun);
     }
 
