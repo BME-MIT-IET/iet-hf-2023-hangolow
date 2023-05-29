@@ -3,30 +3,26 @@ Feature: Equipments
   I want to be able to have different equipments with certain perks
 
   Scenario: The player has an axe to attack with
-    Given the player has more than 0 remaining moves
+    Given InitEquipment
     And has an axe
-    When the user clicks on "Actions"
-    And the user clicks on "attack"
-    And chooses a enemy player
+    When the user tries to attack an enemy player
     Then kills the enemy player
     And the axe becomes unusable
     And the player loses an action
 
   Scenario: The player picks up a bag equipment
-    Given a player
+    Given InitEquipment
     When they pick up a bag
     Then their inventory size increases
 
   Scenario: The player has a cloak when they try to inject them with an agent
-    Given the player has a cloak
-    And an enemy player
+    Given InitEquipment
     When the enemy player tries to inject the player with an agent
     And the player gets lucky
     Then the agent will not be applied to the player
 
   Scenario: The player has a glove when they try to inject them with an agent
-    Given the player has a glove
-    And an enemy player
+    Given InitEquipment
     When they try to inject the player with an agent
     And the glove has uses remaining
     Then the agent will be reflected back to the sender
