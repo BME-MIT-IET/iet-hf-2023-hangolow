@@ -767,6 +767,9 @@ public class Virologist extends Subject
 		return codes.size();
 	}
 
+	public LinkedList<Agent> GetAgents(){
+		return agents;
+	}
 	public int GetMaxEquipmentCount()
 	{
 		return maxNumberOfItems;
