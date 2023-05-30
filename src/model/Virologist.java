@@ -7,6 +7,7 @@ import model.equipments.*;
 import model.map.*;
 import model.strategy.*;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Random;
@@ -23,7 +24,7 @@ public class Virologist extends Subject
 	 */
 	private String name;
 
-	private final Random random;
+	private final SecureRandom random;
 
 	/**
 	 * Beállítja a virológus nevét.
@@ -193,7 +194,7 @@ public class Virologist extends Subject
 		equipments = new ArrayList<>();
 		codes = new ArrayList<>();
 		agents = new LinkedList<>();
-		random = new Random();
+		random = new SecureRandom();
 		//from docs
 		maxNumberOfItems = 3;
 		limit = 20;

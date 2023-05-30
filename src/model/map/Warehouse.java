@@ -2,7 +2,7 @@ package model.map;
 
 import model.Virologist;
 
-import java.util.Random;
+import java.security.SecureRandom;
 
 /**
  * Olyan mező, amelyen anyag gyüjthető
@@ -14,7 +14,7 @@ public class Warehouse extends Field
 	 */
 	private int delta = 5;
 
-	private Random random = new Random();
+	private SecureRandom random = new SecureRandom();
 
 	/**
 	 * Anyag gyüjtése
