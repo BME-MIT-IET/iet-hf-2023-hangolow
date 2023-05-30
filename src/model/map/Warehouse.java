@@ -14,14 +14,16 @@ public class Warehouse extends Field
 	 */
 	private int delta = 5;
 
+	private Random random = new Random();
+
 	/**
 	 * Anyag gyüjtése
 	 * Nem determinisztikus esetben a paraméterül kapott virológus anyagkészletét deltával növeli meg, random választva a 2 fajta anyag közül
 	 * Determinisztikus esetben a paraméterül kapott virológus anyagkészletét deltával növeli meg, a kiválasztott anyag közül
 	 * @param v gyüjtő virológus
 	 */
+	@Override
 	public void CollectMaterial(Virologist v) {
-		Random random = new Random();
 		int r = random.nextInt(2) ;
 		if (r == 0) {
 			v.AddAminoAcid(delta);
