@@ -23,6 +23,8 @@ public class Virologist extends Subject
 	 */
 	private String name;
 
+	private final Random random;
+
 	/**
 	 * Beállítja a virológus nevét.
 	 * @param name A beállítandó név.
@@ -191,7 +193,7 @@ public class Virologist extends Subject
 		equipments = new ArrayList<>();
 		codes = new ArrayList<>();
 		agents = new LinkedList<>();
-
+		random = new Random();
 		//from docs
 		maxNumberOfItems = 3;
 		limit = 20;
@@ -262,7 +264,7 @@ public class Virologist extends Subject
 			ArrayList<Field> fields = field.GetNeighbours();
 
 			if (fields.size() != 0) {
-				Random random = new Random();
+
 				Move(fields.get(random.nextInt(fields.size())));
 			}
 		}
@@ -499,7 +501,6 @@ public class Virologist extends Subject
 	{
 		if (equipments.size() > 0) {
 			if(game.randOn) {
-				Random random = new Random();
 				int r = random.nextInt(equipments.size());
 				Equipment e = equipments.get(r);
 				lootedStr.LootedForEquipment(self, this, e);
