@@ -6,9 +6,6 @@ import model.agents.Agent;
 import model.codes.GeneticCode;
 import model.equipments.Equipment;
 import model.map.Field;
-import model.map.InfectedLaboratory;
-import model.map.Laboratory;
-import model.map.Shelter;
 import view.*;
 
 import java.io.File;
@@ -148,12 +145,12 @@ public class Loader {
                 }
             }
             String eqType = options.get("Equipment");
-            if (eqType != null){
+            if (eqType != null && f != null){
                 f.Drop((Equipment) createObject("view.Drawable" + eqType));
             }
             if (options.get("Name") == null) throw new Exception(); //Name is mandatory!
             if (fields.get(options.get("Name")) != null) throw new Exception(); //Field with Name already Exists!
-            f.setName(options.get("Name"));
+            if (f != null) f.setName(options.get("Name"));
             fields.put(options.get("Name"), f);
             game.AddField(f);
         } catch (Exception e){
