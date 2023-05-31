@@ -37,4 +37,12 @@ public class Axe extends Equipment implements IAttackStr {
         used = true;
         attacker.Reset();
     }
+
+    public boolean isUsed(){
+        return used;
+    }
+
+    public void setUsed(boolean cond){
+        used = cond;
+    }
 }

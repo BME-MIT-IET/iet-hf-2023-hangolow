@@ -64,4 +64,10 @@ public class Glove extends Equipment implements IInjectedStr
 			injected.TargetedWith(by, a);
 		}
 	}
+
+
+	public int getUseCount(){return useCount;}
+	public void setUseCount(int count){
+		useCount = count;
+	}
 }
