@@ -38,8 +38,8 @@ Feature: Move
 
   Scenario: The player moves to an infected laboratory
     Given InitMove
-    When the player tries to move
-    And the field has a player infected with the bear virus
+    When the field has a player infected with the bear virus
+    And the player tries to move
     Then the player is moved to the chosen field
     And the player is infected with the bear virus
     And the player loses an action

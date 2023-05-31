@@ -24,6 +24,8 @@ public class LootStepDefs {
         Game game = Game.Create();
         context.userPlayer = new Virologist();
         context.enemyPlayer = new Virologist();
+        context.userPlayer.AddNucleotide(10);
+        context.userPlayer.AddAminoAcid(10);
         context.enemyPlayer.AddNucleotide(10);
         context.enemyPlayer.AddAminoAcid(10);
         game.NewGame();

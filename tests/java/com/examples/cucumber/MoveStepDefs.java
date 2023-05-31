@@ -21,6 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class MoveStepDefs {
     Field prevField;
+    Field nextField;
 
     @Given("InitMove")
     public void initmove(){
@@ -33,9 +34,18 @@ public class MoveStepDefs {
     @When("the player tries to move")
     public void thePlayerTriesToMove() {
         TestWorldContext context = TestWorldContext.Instance();
-        Field f = new Field();
         prevField = context.userPlayer.getField();
-        context.userPlayer.Move(f);
+
+        if( nextField != null )
+        {
+            context.userPlayer.Move(nextField);
+        }
+        else
+        {
+            Field f = new Field();
+            context.userPlayer.Move(f);
+        }
+
     }
 
     @Then("the player is moved to the chosen field")
@@ -84,17 +94,10 @@ public class MoveStepDefs {
 
     @And("the field has a player infected with the bear virus")
     public void theFieldHasAPlayerInfectedWithTheBearVirus() {
-        TestWorldContext context = TestWorldContext.Instance();
-        Field startField = new Field();
-        context.userPlayer.SetField(startField);
-        for(int i = 0; i < 3; i++){
-            Field neighbouringField = new Field();
-            Virologist v = new Virologist();
-            v.AddAgent(new Bear());
-            neighbouringField.AddVirologist(v);
-            startField.AddNeighbour(neighbouringField);
-        }
-        context.userPlayer.Move(startField.GetNeighbours().get(0));
+        Virologist bearVirologist = new Virologist();
+        nextField = new Field();
+        nextField.AddVirologist(bearVirologist);
+        bearVirologist.TargetedWith(new Bear());
     }
 
     @When("the player tries to move to an infected laboratory field")
