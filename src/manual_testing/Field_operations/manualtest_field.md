@@ -12,6 +12,7 @@ This results in the user not being sure about the failure of the learn action, w
 
 ## Drop
 Droppins works as expected.
+There is a small error when trying to drop an item, while having none in the inventory. In this case, the action count of the player stays the same.
 
 ## Equip
 Picking up equipment works flawlessly. The response is quick and obvious.
