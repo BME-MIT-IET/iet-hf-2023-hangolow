@@ -26,3 +26,7 @@ For example, when moving to a different field of the same type or when attacking
 ![](action_results.png)
 
 The UI is responsive, there is no freezing while playing the game.
+
+It is clear what actions the user can take.
+Formatting is not up to standards.
+![](actions.png)
