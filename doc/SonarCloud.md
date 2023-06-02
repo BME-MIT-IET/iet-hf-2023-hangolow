@@ -12,4 +12,10 @@ Létrehoztam egyúj organizációt SonarCloud-on. Hozzáadtam a projektet az org
 
 ![sonarCloud2.png](sonarCloud2.png)
 
+További javítgatások után, a végső minőség:
+
+![sonarCloudBetter.png](sonarCloudBetter.png)
+
+- a megmaradt code smell-eket nem találtuk túl fontosnak, és a legtöbb felesleges javítás lett volna, így azokat békén hagytuk
+
 Résztvevők: Veress Dániel, Tóth András
