@@ -17,7 +17,8 @@ public abstract class Agent
 	 */
 	@Override
 	public boolean equals(Object o){
-		return this.getClass().getSimpleName().equals(o.getClass().getSimpleName());
+		if (o != null) return this.getClass().getSimpleName().equals(o.getClass().getSimpleName());
+		return false;
 	}
 
 	/**
@@ -52,7 +53,7 @@ public abstract class Agent
 	 */
 	protected int timeToLive;
 
-	public Agent(int ttl){
+	protected Agent(int ttl){
 		timeToLive = ttl;
 	}
 
