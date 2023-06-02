@@ -19,7 +19,8 @@ public abstract class GeneticCode
 	 */
 	@Override
 	public boolean equals(Object o){
-		return this.getClass().getSimpleName().equals(o.getClass().getSimpleName());
+		if (o != null) return this.getClass().getSimpleName().equals(o.getClass().getSimpleName());
+		return false;
 	}
 
 	/**
