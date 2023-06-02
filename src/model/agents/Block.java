@@ -22,6 +22,7 @@ public class Block extends Agent
 	 * Törli az összes jelenleg hatással bíró ágenst és hatásait a virológusból.
 	 * @param v a célzott virológus
 	 */
+	@Override
 	public void Apply(Virologist v)
 	{
 		v.RemoveAgents();
@@ -31,6 +32,7 @@ public class Block extends Agent
 	 * Beállítja a virológuson, hogy blokkolja majd az eljövendő felkenéseket
 	 * @param v a célzott virológus
 	 */
+	@Override
 	public void ApplyStrategy(Virologist v)
 	{
 		NoInjected ni = new NoInjected();

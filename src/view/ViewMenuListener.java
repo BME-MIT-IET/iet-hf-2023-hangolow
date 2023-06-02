@@ -40,6 +40,7 @@ public class ViewMenuListener implements MenuListener {
      */
     @Override
     public void menuDeselected(MenuEvent e) {
+        //
     }
 
     /**
@@ -50,5 +51,6 @@ public class ViewMenuListener implements MenuListener {
      */
     @Override
     public void menuCanceled(MenuEvent e) {
+        //
     }
 }

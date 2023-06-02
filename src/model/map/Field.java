@@ -85,6 +85,7 @@ public class Field
 	 * de nem csinál semmit alapból, hiszen csak a Warehouse-on található anyag
 	 */
 	public void DestroyMaterial(){
+		//
 	}
 
 	/**
@@ -117,6 +118,7 @@ public class Field
 	 * @param v tanuló virológus
 	 */
 	public void LearnGeneticCode(Virologist v) {
+		//
 	}
 
 	/**
@@ -124,6 +126,7 @@ public class Field
 	 * @param v gyüjtő virológus
 	 */
 	public void CollectMaterial(Virologist v) {
+		//
 	}
 
 	/**
@@ -131,7 +134,7 @@ public class Field
 	 * @param v felszedő virológus
 	 */
 	public void PickUpEquipment(Virologist v) {
-		if (equipments.size()>0) {
+		if (!equipments.isEmpty()) {
 			Equipment equipment = equipments.remove(equipments.size()-1);
 			v.AddEquipment(equipment);
 		}

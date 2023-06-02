@@ -108,7 +108,7 @@ public class Window extends Observer{
            Virologist v = game.GetCurrentPlayer();
             for (Virologist vir : v.getField().GetVirologists() ) {
                 JMenuItem item = new JMenuItem(vir.getName());
-                item.addActionListener((e)->controller.attack(vir));
+                item.addActionListener(e->controller.attack(vir));
                 attack.add(item);
             }
         }));
@@ -120,14 +120,14 @@ public class Window extends Observer{
             Virologist v = game.GetCurrentPlayer();
             for (Field field : v.getField().GetNeighbours() ) {
                 JMenuItem item = new JMenuItem(field.getName());
-                item.addActionListener((e)->controller.move(field));
+                item.addActionListener(e->controller.move(field));
                 move.add(item);
             }
         }));
 
         JMenuItem drop = new JMenuItem("drop");
         actions.add(drop);
-        drop.addActionListener((e)->controller.drop());
+        drop.addActionListener(e->controller.drop());
 
         JMenu lootAminoFrom = new JMenu("lootAminoFrom");
         actions.add(lootAminoFrom);
@@ -137,7 +137,7 @@ public class Window extends Observer{
             for (Virologist vir : v.getField().GetVirologists() ) {
                 if (!vir.equals(v)){
                     JMenuItem item = new JMenuItem(vir.getName());
-                    item.addActionListener((e)->controller.lootAminoFrom(vir));
+                    item.addActionListener(e ->controller.lootAminoFrom(vir));
                     lootAminoFrom.add(item);
                 }
             }
@@ -151,7 +151,7 @@ public class Window extends Observer{
             for (Virologist vir : v.getField().GetVirologists() ) {
                 if (!vir.equals(v)){
                     JMenuItem item = new JMenuItem(vir.getName());
-                    item.addActionListener((e)->controller.lootNucleoFrom(vir));
+                    item.addActionListener(e ->controller.lootNucleoFrom(vir));
                     lootNucleoFrom.add(item);
                 }
             }
@@ -165,7 +165,7 @@ public class Window extends Observer{
             for (Virologist vir : v.getField().GetVirologists() ) {
                 if (!vir.equals(v)){
                     JMenuItem item = new JMenuItem(vir.getName());
-                    item.addActionListener((e)->controller.lootEquipmentFrom(vir));
+                    item.addActionListener(e ->controller.lootEquipmentFrom(vir));
                     lootEquipmentFrom.add(item);
                 }
             }
@@ -173,15 +173,15 @@ public class Window extends Observer{
 
         JMenuItem collect=new JMenuItem("collect");
         actions.add(collect);
-        collect.addActionListener((e)->controller.collect());
+        collect.addActionListener(e ->controller.collect());
 
         JMenuItem learn=new JMenuItem("learn");
         actions.add(learn);
-        learn.addActionListener((e)->controller.learn());
+        learn.addActionListener(e ->controller.learn());
 
         JMenuItem equip=new JMenuItem("equip");
         actions.add(equip);
-        equip.addActionListener((e)->controller.equip());
+        equip.addActionListener(e ->controller.equip());
 
         JMenu inject = new JMenu("inject");
         actions.add(inject);
@@ -194,7 +194,7 @@ public class Window extends Observer{
                     virMenu.removeAll();
                     for (GeneticCode code : v.getGeneticCodes()){
                         JMenuItem codeItem = new JMenuItem(code.getName());
-                        codeItem.addActionListener((e)->controller.inject(vir, code));
+                        codeItem.addActionListener(e ->controller.inject(vir, code));
                         virMenu.add(codeItem);
                     }
                 }));
@@ -204,7 +204,7 @@ public class Window extends Observer{
 
         JMenuItem endTurn=new JMenuItem("endTurn");
         actions.add(endTurn);
-        endTurn.addActionListener((e) -> controller.endTurn());
+        endTurn.addActionListener(e -> controller.endTurn());
 
         drawInterface();
 
@@ -246,12 +246,16 @@ public class Window extends Observer{
                 try {
                     equipmentSlotIcon = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream(drawableEquipment.getTexture())));
                     equipmentSlotIcon = equipmentSlotIcon.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-                } catch (IOException ignored) { }
+                } catch (IOException ignored) {
+                    //
+                }
             } else {
                 try {
                     equipmentSlotIcon = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/textures/itemSlot.png")));
                     equipmentSlotIcon = equipmentSlotIcon.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-                } catch (IOException ignored) {}
+                } catch (IOException ignored) {
+                    //
+                }
             }
             assert equipmentSlotIcon != null;
             equipmentButtons.get(i).setIcon( new ImageIcon(equipmentSlotIcon));
@@ -279,7 +283,9 @@ public class Window extends Observer{
             backGroundIMG = backGroundIMG.getScaledInstance(600, 600, Image.SCALE_SMOOTH);
             backGround.setIcon(new ImageIcon(backGroundIMG));
             backGround.setBounds(0, 0, 600, 600);
-        } catch (IOException ignored) { }
+        } catch (IOException ignored) {
+            //
+        }
     }
 
     /**
@@ -300,7 +306,7 @@ public class Window extends Observer{
 
         assert endButtonIcon != null;
         JButton endButton = new JButton(new ImageIcon(endButtonIcon));
-        endButton.addActionListener((e)-> controller.endTurn());
+        endButton.addActionListener(e -> controller.endTurn());
         endButton.setBorder(null);
         endButton.setContentAreaFilled(false);
         endButton.setBorderPainted(false);
@@ -309,6 +315,8 @@ public class Window extends Observer{
         endButton.setBounds(480, 450, 70, 70);
 
     //ANYAGSÁVOK BEÁLLÍTÁSA
+        String fontFamily = "sans-serif";
+
         nucleoBar = new JProgressBar();
         nucleoBar.setBounds(215, 460, 170, 25);
         nucleoBar.setMaximum(20);
@@ -316,7 +324,7 @@ public class Window extends Observer{
         nucleoLabel = new JLabel("min");
         nucleoLabel.setBounds(215, 465, 170, 15);
         nucleoLabel.setHorizontalAlignment(JLabel.CENTER);
-        nucleoLabel.setFont(new Font("sans-serif", Font.BOLD, 13));
+        nucleoLabel.setFont(new Font(fontFamily, Font.BOLD, 13));
 
         aminoBar = new JProgressBar();
         aminoBar.setBounds(215, 495, 170, 25);
@@ -325,7 +333,7 @@ public class Window extends Observer{
         aminoLabel = new JLabel("min");
         aminoLabel.setBounds(215, 500, 170, 15);
         aminoLabel.setHorizontalAlignment(JLabel.CENTER);
-        aminoLabel.setFont(new Font("sans-serif", Font.BOLD, 13));
+        aminoLabel.setFont(new Font(fontFamily, Font.BOLD, 13));
 
     //FELSZERELÉSEK BEÁLLÍTÁSA
         Image equipmentSlotIcon = null;
@@ -352,7 +360,7 @@ public class Window extends Observer{
 
     //AKCIÓSZÁMLÁLÓ BEÁLLÍTÁSA
         turnCounter = new JLabel("3 / 3");
-        turnCounter.setFont(new Font("sans-serif", Font.BOLD, 48));
+        turnCounter.setFont(new Font(fontFamily, Font.BOLD, 48));
         turnCounter.setForeground(Color.white);
         turnCounter.setBounds(480, 25, 160, 50);
 
@@ -376,7 +384,7 @@ public class Window extends Observer{
         actionBubbleText.setBorder(BorderFactory.createEmptyBorder());
         actionBubbleText.setBounds(290,235, 170,50);
         actionBubbleText.setEditable(false);
-        actionBubbleText.setFont(new Font("sans-serif", Font.BOLD, 12));
+        actionBubbleText.setFont(new Font(fontFamily, Font.BOLD, 12));
         actionBubbleText.setColumns(28);
         actionBubbleText.setLineWrap(true);
 

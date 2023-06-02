@@ -23,6 +23,7 @@ public class Forget extends Agent
 	 * aki elfelejti az összes megtanult GeneticCode-ját.
 	 * @param v a célzott virológus
 	 */
+	@Override
 	public void Apply(Virologist v)
 	{
 		v.RemoveGeneticCodes();

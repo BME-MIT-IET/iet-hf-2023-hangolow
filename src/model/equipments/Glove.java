@@ -21,6 +21,7 @@ public class Glove extends Equipment implements IInjectedStr
 	 * Alkalmazza az ágensek felől érinthetetlen stratégiát
 	 * @param v viselő virológus
 	 */
+	@Override
 	public void ApplyStrategy(Virologist v) {
 		v.SetInjectedStr(this);
 	}

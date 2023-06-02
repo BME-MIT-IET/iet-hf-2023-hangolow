@@ -22,6 +22,7 @@ public class Laboratory extends Field
 	 * Genetikai kód tanuása a mezőn
 	 * @param v tanuló virológus
 	 */
+	@Override
 	public void LearnGeneticCode(Virologist v) {
 		v.AddGeneticCode(code);
 	}

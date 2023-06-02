@@ -10,7 +10,6 @@ import model.strategy.*;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.Random;
 
 /**
  *  A virologusert felelo osztaly. Ezeket az objektumokat
@@ -264,7 +263,7 @@ public class Virologist extends Subject
 		if (actionCount > 0) {
 			ArrayList<Field> fields = field.GetNeighbours();
 
-			if (fields.size() != 0) {
+			if (!fields.isEmpty()) {
 
 				Move(fields.get(random.nextInt(fields.size())));
 			}
@@ -301,7 +300,7 @@ public class Virologist extends Subject
 	 */
 	public void Drop()
 	{
-		if (actionCount > 0 && equipments.size() > 0) {
+		if (actionCount > 0 && !equipments.isEmpty()) {
 			dropStr.Drop(this, field, equipments.remove(equipments.size()-1));
 		}
 		notifyAllObservers();
@@ -428,7 +427,7 @@ public class Virologist extends Subject
 	 */
 	public Equipment GetEquipment() throws IndexOutOfBoundsException
 	{
-		if (equipments.size() == 0)
+		if (equipments.isEmpty())
 			throw new IndexOutOfBoundsException("ures a felszereles tarolo");
 
 		return equipments.remove(equipments.size()-1);
@@ -500,7 +499,7 @@ public class Virologist extends Subject
 	 */
 	public void StealEquipment(Virologist self)
 	{
-		if (equipments.size() > 0) {
+		if (!equipments.isEmpty()) {
 			if(game.randOn) {
 				int r = random.nextInt(equipments.size());
 				Equipment e = equipments.get(r);
